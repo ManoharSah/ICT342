@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/montserrat-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Montserrat Regular'), local('Montserrat-Regular'),
+       url('../fonts/montserrat-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/montserrat-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/montserrat-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/montserrat-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/montserrat-v12-latin-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+header{
+	margin-bottom: 60px;
+}
+body{
+	overflow-x: hidden;
+	font-family: 'Open Sans', sans-serif; 
+}
+.panel_toolbox>li>a{
+  color: #00ae48 !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #00ae48 !important;
+    border-color: #00ae48 !important; /*set the color you want here*/
+}
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #09a349 !important;
+    border-color: #09a349 !important; /*set the color you want here*/
+}
+
+.wizard_verticle ul.wizard_steps li a.selected:before,
+.step_no {
+    background: #00ae48;
+}
+
+.wizard_horizontal ul.wizard_steps li a.done:before,
+.wizard_horizontal ul.wizard_steps li a.done .step_no {
+    background: #13c15b !important;
+}
+.x_title{
+	font-family: 'Montserrat'
+}
+.business_case {
+	margin-top: 30px !important;
+	border-left: 2px solid #dedede; 
+}
+footer.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background: #191919;
+    padding: 20px 0px;
+    color: #ffffff !important;
+}
+main{
+  padding-bottom: 40px;
+}
