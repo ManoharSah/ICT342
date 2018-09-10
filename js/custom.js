@@ -1782,19 +1782,6 @@ if (typeof NProgress != 'undefined') {
 		
 		function init_SmartWizard() {
 			
-			if( typeof ($.fn.smartWizard) === 'undefined'){ return; }
-			console.log('init_SmartWizard');
-			
-			$('#wizard').smartWizard();
-
-			$('#wizard_verticle').smartWizard({
-			  transitionEffect: 'slide'
-			});
-
-			$('.buttonNext').addClass('btn btn-primary');
-			$('.buttonPrevious').addClass('btn btn-primary');
-			$('.buttonFinish').addClass('btn btn-default').remove();
-			
 		};
 	   
 	   

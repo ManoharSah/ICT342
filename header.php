@@ -1,3 +1,4 @@
+<?php include('libs/common.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
