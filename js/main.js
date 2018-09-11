@@ -121,7 +121,7 @@ function show_fields(){
 		+'</label>'
 		+'<div class="col-md-6 col-sm-6 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][wage]" required="required" class="form-control col-md-7 col-xs-12">'
-		+'<span class="help-block">A block of help text</span></div>'
+		+'<span class="help-block">Annual Salary of a Technician.</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_productivity">'
 		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
@@ -135,7 +135,7 @@ function show_fields(){
 		+'</label>'
 		+'<div class="col-md-6 col-sm-6 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][efficiency]" required="required" class="form-control col-md-7 col-xs-12">'
-		+'<span class="help-block">A block of help text</span></div>'
+		+'<span class="help-block">Productivity of a Technician.</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_hourly_rate" >'
 		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
@@ -143,7 +143,7 @@ function show_fields(){
 		+'</label>'
 		+'<div class="col-md-6 col-sm-6 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][hourly_rate]" required="required" class="form-control col-md-7 col-xs-12">'
-		+'<span class="help-block">A block of help text</span></div>'
+		+'<span class="help-block">Hourly rate of a retail Labour.</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_no_of_days" >'
 		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
@@ -151,7 +151,7 @@ function show_fields(){
 		+'</label>'
 		+'<div class="col-md-6 col-sm-6 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][no_of_days]" required="required" class="form-control col-md-7 col-xs-12">'
-		+'<span class="help-block">A block of help text</span></div>'
+		+'<span class="help-block">How long the position is vacant for in days?</span></div>'
 		+'</div></div>';
 	}
 	$('#show_techician').html(html);
