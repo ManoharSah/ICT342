@@ -101,10 +101,25 @@ if(!$calculation_id) {
                         </label>
                         </div>
                       </div>
+                      <div class="item form-group privacy_policy">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: left;">
+                          <input name="calculation[<?php echo $calculation_id ?>][privacy_policy]" type="checkbox" value="1" id="privacy_policy" checked /> I agree to Solutions Culture sending me useful information from time to time.  (We HATE spam and will never disclose yor details without yout consent. Our <a href="http://www.solutionsculture.com/privacy-policy/" target="_blank">Privacy policy</a> is here)
+                          </label>
+                        </div>
+                      </div>
                   </div>
                   <div id="step-2">
-                      <div class="item form-group"  id="how-many">
+                      <div class="item form-group"  id="how-many-now">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">How many techicians do you have?<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="calculation[<?php echo $calculation_id ?>][how-many-now]" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group"  id="how-many">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">How many technicians are you presently missing? <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="number" name="calculation[<?php echo $calculation_id ?>][how-many]" required="required" class="form-control col-md-7 col-xs-12">
@@ -129,19 +144,36 @@ if(!$calculation_id) {
                     	<thead>
                     		<tr>
                     			<th>Technician #</th>
-                    			<th>Lost Retail Labour</th>
-                    			<th>Recruitment Cost</th>
-                    			<th>Onboarding Cost</th>
-                    			<th>Total Cost</th>
+                    			<th>
+                            Lost Retail Labour
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for lost retail labour"><i class="glyphicon glyphicon-question-sign"></i></a>
+                          </th>
+                    			<th>
+                            Recruitment Cost
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for recruitment cost"><i class="glyphicon glyphicon-question-sign"></i></a>
+                          </th>
+                    			<th>
+                            Onboarding Cost
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for onboarding cost"><i class="glyphicon glyphicon-question-sign"></i></a>
+                          </th>
+                    			<th>
+                            Total Cost
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for total cost"><i class="glyphicon glyphicon-question-sign"></i></a>
+                          </th>
                     		</tr>
                     	</thead>
                     	<tbody>
                     	</tbody>
                     </table>
                     <div class="row">
-                    	<div class="col-md-12 text-center">
-                    		<a href="#" class="btn btn-primary">Download</a>
-                    		<a href="#" class="btn btn-primary">Print</a>
+                      <div class="col-md-2 col-md-offset-5 text-center">
+                    		<a href="http://www.solutionsculture.com/contact/" target="_blank" class="btn btn-primary btn-block">Contact</a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                        <a href="#" class="btn btn-primary">Download</a>
+                        <a href="#" class="btn btn-primary">Print</a>
                     	</div>
                     </div>
                   </div>

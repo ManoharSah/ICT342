@@ -58,7 +58,12 @@ footer.footer{
     background: #191919;
     padding: 20px 0px;
     color: #ffffff !important;
+    z-index: 9999;
 }
 main{
   padding-bottom: 40px;
+}
+
+.privacy_policy a {
+  text-decoration: underline !important;
 }

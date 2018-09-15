@@ -6,10 +6,18 @@ $('#wizard').smartWizard({
 function leaveAStepCallback(obj, context) {
 	if(context.fromStep == 2) {
 		show_fields();
+		if(validateSteps(context.fromStep)){
+			$('.buttonNext').html("Submit");
+			$('.buttonPrevious').hide();
+		}
 	}
 	if(context.fromStep == 3) {
 		// show summary
 		show_summary();
+		if(validateSteps(context.fromStep)){
+			$('.buttonNext').hide();
+			$('.buttonFinish').addClass('btn btn-primary').hide();
+		}
 	}
 	return validateSteps(context.fromStep);
 }
@@ -29,12 +37,18 @@ function validateSteps(stepnumber) {
     }
     if(stepnumber == 2){
     	var validateFields = [
-    		'how-many'
+    		'how-many',
+    		'how-many-now'
     	];
     	isStepValid = isValid(validateFields);
     	if($('#how-many').find('input').val() <= 0) {
     		$('#how-many').addClass('bad');
-    		$('#how-many').find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Please enter more than 0</div>');
+    		$('#how-many').find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert enter more than 0</div>');
+    		isStepValid = false;
+    	}
+    	if($('#how-many-now').find('input').val() <= 0) {
+    		$('#how-many-now').addClass('bad');
+    		$('#how-many-now').find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert enter more than 0</div>');
     		isStepValid = false;
     	}
     }
@@ -61,7 +75,7 @@ function isValid(validateFields){
 		elem.find('.alert').remove();
 		if (elem.find('input').val() == ''){
 			elem.addClass('bad');
-			elem.find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Please put something here</div>');
+			elem.find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert appropriate value</div>');
 			valid = false;
 		}
 	});
@@ -74,7 +88,7 @@ $('#wizard_verticle').smartWizard({
 
 $('.buttonNext').addClass('btn btn-primary');
 $('.buttonPrevious').addClass('btn btn-primary');
-$('.buttonFinish').addClass('btn btn-default').remove();
+$('.buttonFinish').addClass('btn btn-default').hide();
 
 function show_summary() {
 	var how_many = $('#how-many').find('input').val();
@@ -114,6 +128,18 @@ function show_fields(){
 	html += '<div id="technician_'+i+'><div class="form-group">'
 		+'<label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center">'
 		+'Technician:'+i+'</label>'
+		+'</div>'
+		+'<div class="item form-group" id="technician_'+i+'_type">'
+		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
+		+'Technician Type <span class="required">*</span>'
+		+'</label>'
+		+'<div class="col-md-6 col-sm-6 col-xs-12">'
+		+'<select name="technician['+i+'][type]" required="required" class="form-control col-md-7 col-xs-12">'
+		+'<option value="1">Diagnostic Technician</option>'
+		+'<option value="2">Service Technician</option>'
+		+'<option value="3">General/Repair Technician</option>'
+		+'</select>'
+		+'</div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_wage">'
 		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
