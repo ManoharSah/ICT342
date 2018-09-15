@@ -99,7 +99,7 @@ class DB
 		$this->sql .= "');";
 		// echo $this->sql;exit;
 	}
-	protected function prepare_update_sql($id,$data)
+	protected function prepare_update_sql($colunm_name, $id, $data)
 	{
 		$this->sql = "";
 		$this->sql .= "UPDATE  ";
@@ -110,15 +110,15 @@ class DB
 			}
 			$this->sql .= implode(", ",$parts);
 		}
-		$this->sql .= " WHERE id = $id;";
+		$this->sql .= " WHERE {$colunm_name} = $id;";
 		// echo $this->sql;exit;
 	}
 	public function insert($data){
 		$this->prepare_insert_sql($data);
 		return $this->insert_query($this->sql);
 	}
-	public function update($id,$data){
-		$this->prepare_update_sql($id,$data);
+	public function update($colunm_name, $id, $data){
+		$this->prepare_update_sql($colunm_name, $id, $data);
 		return $this->insert_query($this->sql);
 	}
 	public function delete($id = false){

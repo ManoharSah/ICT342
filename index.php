@@ -1,5 +1,10 @@
 <?php include('header.php') ?>
+<?php 
 
+// reset any calculation id in session
+$_SESSION['calculation_id'] = false;
+
+ ?>
 <main>
 	
 	<div class="container">

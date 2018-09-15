@@ -12,8 +12,8 @@ function insert_temp_calculation() {
 		'bus_name' => '',
 		'email' => '',
 		'contact' => '',
-		'position' => 0,
-		'owner' => 0,
+		'position' => '',
+		'owner' => 1,
 		'temp' => 1
 	));
 	session('customer_id', $temp_customer_id);
@@ -35,6 +35,26 @@ function insert_temp_calculation() {
 		'totalcost' => 0,
 		'temp' => 1
 	));
-	
+
 	return $temp_calculation_id;
+}
+
+function get_calculation_data($calculation_id) {
+	global $db;
+
+	$sql = "
+		SELECT 
+			cal.*,
+			cus.*
+		FROM 
+			calculation cal
+		LEFT JOIN customer cus ON cus.customer_id = cal.customer_id
+		WHERE 
+			cal.calculation_id = {$calculation_id}
+	";
+
+	$data = $db->query($sql);
+
+	return $data[0];
+
 }

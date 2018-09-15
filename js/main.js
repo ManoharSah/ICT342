@@ -1,4 +1,5 @@
 
+
 $('#wizard').smartWizard({
 	onLeaveStep:leaveAStepCallback
 });
@@ -27,29 +28,45 @@ function validateSteps(stepnumber) {
     if(stepnumber == 1){
     	var validateFields = [
     		'name',
-    		// 'business_name',
+    		// 'bus_name',
     		// 'position',
     		// 'owner',
     		// 'phone',
     		// 'email'
     	];
     	isStepValid = isValid(validateFields);
+    	if(isStepValid) {
+    		$.post(
+    			'libs/ajax.php?action=save_step_1',
+				$('input[name^="step_1"]').serialize()
+	    	);
+    	}
     }
     if(stepnumber == 2){
     	var validateFields = [
     		'how-many',
     		'how-many-now'
     	];
-    	isStepValid = isValid(validateFields);
-    	if($('#how-many').find('input').val() <= 0) {
-    		$('#how-many').addClass('bad');
-    		$('#how-many').find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert enter more than 0</div>');
-    		isStepValid = false;
+    	if (isStepValid) {
+    		isStepValid = isValid(validateFields);
     	}
-    	if($('#how-many-now').find('input').val() <= 0) {
-    		$('#how-many-now').addClass('bad');
-    		$('#how-many-now').find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert enter more than 0</div>');
-    		isStepValid = false;
+    	if (isStepValid) {
+	    	if($('#how-many').find('input').val() <= 0) {
+	    		$('#how-many').addClass('bad');
+	    		$('#how-many').find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert enter more than 0</div>');
+	    		isStepValid = false;
+	    	}
+	    	if($('#how-many-now').find('input').val() <= 0) {
+	    		$('#how-many-now').addClass('bad');
+	    		$('#how-many-now').find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert enter more than 0</div>');
+	    		isStepValid = false;
+	    	}
+    	}
+    	if (isStepValid) {
+    		$.post(
+    			'libs/ajax.php?action=save_step_2',
+				$('input[name^="step_2"]').serialize()
+	    	);
     	}
     }
     if(stepnumber == 3) {
@@ -63,6 +80,12 @@ function validateSteps(stepnumber) {
 			validateFields.push('technician_'+i+'_no_of_days');
 		}
     	isStepValid = isValid(validateFields);
+    	if (isStepValid) {
+    		$.post(
+    			'libs/ajax.php?action=save_step_3',
+				$('input[name^="technician"],select[name^="technician"]').serialize()
+	    	);
+    	}
     }
     return isStepValid;
 }
@@ -113,7 +136,7 @@ function show_summary() {
 				+'<td><input disabled type="text" class="form-control" value="'+currency_format(technician_total)+'"></td>'
 				+'</tr>';
 	}
-	html += '<tr><td></td><td></td><td></td><td></td><td><input disabled type="text" class="form-control" value="'+total_total.toFixed(2)+'"></td></tr>'
+	html += '<tr><td></td><td></td><td></td><td></td><td><input disabled type="text" class="form-control" value="'+currency_format(total_total)+'"></td></tr>'
 	$('#summary').find('tbody').html(html);
 }
 
@@ -181,4 +204,29 @@ function show_fields(){
 		+'</div></div>';
 	}
 	$('#show_techician').html(html);
+}
+
+function printToPdf() {
+
+	var doc = new jsPDF();
+	doc.fromHTML($('#summary').html());
+	doc.save();
+
+}
+
+function printdiv(printdivname) {
+	
+	var headstr = "<html><head><title>Booking Details</title></head><body>";
+	var footstr = "</body>";
+	var newstr = document.getElementById(printdivname).innerHTML;
+	var oldstr = document.body.innerHTML;
+	
+	document.body.innerHTML = headstr+newstr+footstr;
+	
+	window.print();
+
+	document.body.innerHTML = oldstr;
+	
+	return false;
+
 }

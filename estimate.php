@@ -3,10 +3,13 @@
 
 $calculation_id = session('calculation_id');
 
+
 if(!$calculation_id) {
   $calculation_id = insert_temp_calculation();
   session('calculation_id', $calculation_id);
 }
+
+$data = get_calculation_data($calculation_id);
 
 ?>
 <main>	
@@ -55,31 +58,31 @@ if(!$calculation_id) {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="calculation[<?php echo $calculation_id ?>][name]" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" name="step_1[<?php echo $calculation_id ?>][name]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['name'] ?>">
                         </div>
                       </div>
-                      <div class="item form-group" id="business_name">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="business_name">Business Name <span class="required">*</span>
+                      <div class="item form-group" id="bus_name">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="bus_name">Business Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="calculation[<?php echo $calculation_id ?>][business_name]" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" name="step_1[<?php echo $calculation_id ?>][bus_name]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['bus_name'] ?>">
                         </div>
                       </div>
                       <div class="item form-group" id="position" >
                         <label for="position" class="control-label col-md-3 col-sm-3 col-xs-12">Position <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input class="form-control col-md-7 col-xs-12" type="text" name="calculation[<?php echo $calculation_id ?>][position]">
+                          <input class="form-control col-md-7 col-xs-12" type="text" name="step_1[<?php echo $calculation_id ?>][position]" value="<?php echo $data['position'] ?>">
                         </div>
                       </div>
                       <div class="item form-group" id="owner">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Owner</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="calculation[<?php echo $calculation_id ?>][owner]" value="1"> &nbsp; Owner &nbsp;
+                            <label class="btn btn-default <?php echo ($data['owner'] == 1) ? 'active' : ''; ?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="step_1[<?php echo $calculation_id ?>][owner]" value="1" <?php echo ($data['owner'] == 1) ? 'checked' : ''; ?> /> &nbsp; Owner &nbsp;
                             </label>
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="calculation[<?php echo $calculation_id ?>][owner]" value="2"> Employee
+                            <label class="btn btn-default <?php echo ($data['owner'] == 2) ? 'active' : ''; ?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="step_1[<?php echo $calculation_id ?>][owner]" value="2" <?php echo ($data['owner'] == 2) ? 'checked' : ''; ?>> Employee
                             </label>
                           </div>
                         </div>
@@ -88,14 +91,14 @@ if(!$calculation_id) {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="calculation[<?php echo $calculation_id ?>][phone]" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" name="step_1[<?php echo $calculation_id ?>][contact]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['contact'] ?>">
                         </div>
                       </div>
                       <div class="item form-group" id="email">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Email <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input name="calculation[<?php echo $calculation_id ?>][email]" class="email form-control col-md-7 col-xs-12" required="required" type="email">
+                          <input name="step_1[<?php echo $calculation_id ?>][email]" class="email form-control col-md-7 col-xs-12" required="required" type="email" value="<?php echo $data['email'] ?>">
                           <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center">
                           Note: Fields marked with * are mandatory.
                         </label>
@@ -105,7 +108,7 @@ if(!$calculation_id) {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: left;">
-                          <input name="calculation[<?php echo $calculation_id ?>][privacy_policy]" type="checkbox" value="1" id="privacy_policy" checked /> I agree to Solutions Culture sending me useful information from time to time.  (We HATE spam and will never disclose yor details without yout consent. Our <a href="http://www.solutionsculture.com/privacy-policy/" target="_blank">Privacy policy</a> is here)
+                          <input name="step_1[<?php echo $calculation_id ?>][notification]" type="checkbox" value="1" id="privacy_policy" <?php echo ($data['notification'] == 1) ? 'checked' : ''; ?> /> I agree to Solutions Culture sending me useful information from time to time.  (We HATE spam and will never disclose yor details without yout consent. Our <a href="http://www.solutionsculture.com/privacy-policy/" target="_blank">Privacy policy</a> is here)
                           </label>
                         </div>
                       </div>
@@ -115,14 +118,14 @@ if(!$calculation_id) {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">How many techicians do you have?<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="calculation[<?php echo $calculation_id ?>][how-many-now]" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="number" name="step_2[<?php echo $calculation_id ?>][how-many-now]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['how_many_now'] ?>">
                         </div>
                       </div>
                       <div class="item form-group"  id="how-many">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">How many technicians are you presently missing? <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="calculation[<?php echo $calculation_id ?>][how-many]" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="number" name="step_2[<?php echo $calculation_id ?>][how-many]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['how_many'] ?>">
                           <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center">
                           Note: Fields marked with * are mandatory.
                         </label>
@@ -172,8 +175,8 @@ if(!$calculation_id) {
                     </div>
                     <div class="row">
                       <div class="col-md-12 text-center">
-                        <a href="#" class="btn btn-primary">Download</a>
-                        <a href="#" class="btn btn-primary">Print</a>
+                        <a href="#" class="btn btn-primary" onclick="printToPdf()">Download</a>
+                        <a href="#" class="btn btn-primary" onclick="printdiv('summary')">Print</a>
                     	</div>
                     </div>
                   </div>

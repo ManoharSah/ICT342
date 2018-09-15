@@ -18,7 +18,8 @@
 	 <!-- jQuery Smart Wizard -->
     <script src="vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 
+	<script type="text/javascript" src="js/jspdf.min.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
