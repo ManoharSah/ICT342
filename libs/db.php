@@ -84,7 +84,7 @@ class DB
 			}
 			$this->sql .= implode(" AND ",$parts);
 		}
-		$this->sql .= " ORDER BY id ".$this->order.";";
+		// $this->sql .= " ORDER BY id ".$this->order.";";
 		// echo $this->sql;exit;
 	}
 	protected function prepare_insert_sql($data)
