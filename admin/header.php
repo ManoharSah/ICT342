@@ -1,3 +1,4 @@
+<?php include('../libs/common.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 
@@ -34,14 +35,14 @@
 	          <ul class="nav navbar-nav" style="width: 100%">
 	            <li><a href="http://www.solutionsculture.com/" target="_blank"><img src="images/logo.png" alt="logo" class="img-responsive" style="width:250px"></a></li>
 	            <li>
-	            	<a class="business_case" href="index.php">Admin Home</a>
+	            	<a class="business_case" href="index.php">Admin <br>Home</a>
 	            </li>
 	            <li class="dropdown admin_dropdown">
 		          <a id="drop4" role="button" data-toggle="dropdown" href="#">Admin <b class="caret"></b></a>
 		          <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-		            <li role="presentation"><a role="menuitem" tabindex="-1" href="change_password.php">Change password</a></li>
-		            <li role="presentation"><a role="menuitem" tabindex="-1" href="change_email.php">Change email</a></li>
-		            <li role="presentation"><a role="menuitem" tabindex="-1" href="">Logout</a></li>
+		            <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="change_password.php">Change password</a></li>
+		            <li role="presentation"><a role="menuitem" tabindex="-1" href="change_email.php">Change email</a></li> -->
+		            <li role="presentation"><a role="menuitem" tabindex="-1" href="logout.php">Logout</a></li>
 		          </ul>
 		        </li>
 	          </ul>

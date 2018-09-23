@@ -25,9 +25,9 @@ $data = get_calculation_data($calculation_id);
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-              <form class="form-horizontal form-label-left">
+              <div class="form-horizontal form-label-left">
                 <div id="wizard" class="form_wizard wizard_horizontal">
-                  <ul class="wizard_steps">
+                  <ul class="wizard_steps" style="margin-bottom: 40px;">
                     <li>
                       <a href="#step-1">
                         <span class="step_no">1</span>
@@ -99,7 +99,7 @@ $data = get_calculation_data($calculation_id);
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input name="step_1[<?php echo $calculation_id ?>][email]" class="email form-control col-md-7 col-xs-12" required="required" type="email" value="<?php echo $data['email'] ?>">
-                          <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center">
+                          <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center;font-weight: normal;">
                           Note: Fields marked with * are mandatory.
                         </label>
                         </div>
@@ -107,29 +107,33 @@ $data = get_calculation_data($calculation_id);
                       <div class="item form-group privacy_policy">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: left;">
-                          <input name="step_1[<?php echo $calculation_id ?>][notification]" type="checkbox" value="1" id="privacy_policy" <?php echo ($data['notification'] == 1) ? 'checked' : ''; ?> /> I agree to Solutions Culture sending me useful information from time to time.  (We HATE spam and will never disclose yor details without yout consent. Our <a href="http://www.solutionsculture.com/privacy-policy/" target="_blank">Privacy policy</a> is here)
+                          <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: left;font-weight: normal;">
+                          <input name="step_1[<?php echo $calculation_id ?>][notification]" type="checkbox" value="1" id="privacy_policy" <?php echo ($data['notification'] == 1) ? 'checked' : ''; ?> /> I agree to Solutions Culture sending me useful information from time to time.  (We HATE spam and will never disclose yor details without yout consent. Our <a href="http://www.solutionsculture.com/privacy-policy/" target="_blank" class="green_link">Privacy policy</a> is here)
                           </label>
                         </div>
                       </div>
                   </div>
                   <div id="step-2">
                       <div class="item form-group"  id="how-many-now">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">How many techicians do you have?<span class="required">*</span>
+                        <label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">How many techicians do you have?<span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="number" name="step_2[<?php echo $calculation_id ?>][how-many-now]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['how_many_now'] ?>">
+                          <span class="help-block">Annual Salary of a lost technician.</span>
                         </div>
                       </div>
                       <div class="item form-group"  id="how-many">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">How many technicians are you presently missing? <span class="required">*</span>
+                        <label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">How many technicians are you presently missing? <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="number" name="step_2[<?php echo $calculation_id ?>][how-many]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['how_many'] ?>">
-                          <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center">
-                          Note: Fields marked with * are mandatory.
-                        </label>
+                          <span class="help-block">Annual Salary of a lost technician.</span>
                         </div>
+                      </div>
+                      <div class="form-group">                        
+                          <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center;font-weight: normal;">
+                            Note: Fields marked with * are mandatory.
+                          </label>
                       </div>
                   </div>
                   <div id="step-3">
@@ -137,7 +141,7 @@ $data = get_calculation_data($calculation_id);
                       <div id="show_techician"></div>
                       
                       <div class="form-group">
-                        <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center">
+                        <label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center;font-weight: normal;">
                         	Note: Fields marked with * are mandatory.
                         </label>
                       </div>
@@ -168,20 +172,34 @@ $data = get_calculation_data($calculation_id);
                     	<tbody>
                     	</tbody>
                     </table>
-                    <div class="row">
-                      <div class="col-md-2 col-md-offset-5 text-center">
-                    		<a href="http://www.solutionsculture.com/contact/" target="_blank" class="btn btn-primary btn-block">Contact</a>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 text-center">
-                        <a href="#" class="btn btn-primary" onclick="printToPdf()">Download</a>
-                        <a href="#" class="btn btn-primary" onclick="printdiv('summary')">Print</a>
-                    	</div>
+                    <div class="row" style="margin-top: 150px;">
+                    <form action="finish.php" method="GET" id="submit_form">
+                        <input type="hidden" name="calculation_id" value="<?php echo $_SESSION['calculation_id'] ?>">
+                        <div class="col-md-12 text-center">
+                          <p>
+                            Now that you have the calculations, lets discuss this further!
+                          </p>
+                            
+                          <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">                            
+                              <div class="input-group date" id="datetimepicker1">
+                                  <input type="text" class="form-control" name="datetime" />
+                                  <span class="input-group-addon">
+                                      <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                          <input type="submit" name="book" onclick="return validateForm()" value="Book a phone appointment" class="btn btn-primary" />
+                          <input type="submit" name="book" value="Finish" class="btn btn-primary" />
+                        </div>
+                    </form>
                     </div>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

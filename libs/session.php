@@ -42,3 +42,8 @@ function debug($data){
 	print_r($data);
 	echo '</pre>';
 }
+
+
+function myMoney($number) {
+	return number_format($number, 2, '.', ',');;
+}

@@ -32,6 +32,7 @@ function insert_temp_calculation() {
 		'calculation_id' => $temp_calculation_id,
 		'customer_id' => $temp_customer_id,
 		'datetime' => date_to_mysql(),
+		'call_appointment' => '0000-00-00 00:00:00',
 		'totalcost' => 0,
 		'temp' => 1
 	));
@@ -39,7 +40,7 @@ function insert_temp_calculation() {
 	return $temp_calculation_id;
 }
 
-function get_calculation_data($calculation_id) {
+function get_calculation_data($calculation_id, $temp = false) {
 	global $db;
 
 	$sql = "
@@ -53,8 +54,33 @@ function get_calculation_data($calculation_id) {
 			cal.calculation_id = {$calculation_id}
 	";
 
+	if($temp) {
+		$sql .= " AND cal.temp = 0 AND cus.temp = 0";
+	}
+
 	$data = $db->query($sql);
 
-	return $data[0];
+	if (count($data) > 0) {
+		return $data[0];
+	}
 
+	return false;
+
+}
+
+function get_technicians($calculation_id) {
+	global $db;
+	return $db->table('technician')->where(array('calculation_id'=>$calculation_id))->results();
+}
+
+function get_summary($calculation_id) {
+	$calculation = get_calculation_data($calculation_id, true);
+
+	if($calculation) {
+
+		$calculation['technicians'] = get_technicians($calculation_id); 
+
+	}
+
+	return $calculation;
 }

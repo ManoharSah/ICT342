@@ -16,6 +16,7 @@ header{
 body{
 	overflow-x: hidden;
 	font-family: 'Open Sans', sans-serif; 
+  padding-top: 15px;
 }
 .panel_toolbox>li>a{
   color: #00ae48 !important;
@@ -66,4 +67,30 @@ main{
 
 .privacy_policy a {
   text-decoration: underline !important;
+}
+
+a.business_case {
+    font-size: 25px;
+    margin-top: 0px !important;
+    color: #666666;
+}
+
+.green_link{
+  color: #00ae48;
+}
+
+.alert-success{
+  background: #00ae48 !important;
+}
+
+@media print {
+  #summary {
+    width: 100%;
+    border-collapse: collapse;
+  }
+}
+
+li.admin_dropdown{
+  margin-top: 30px !important;
+  float: right;
 }

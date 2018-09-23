@@ -48,7 +48,7 @@ class DB
 	{
 		$data = array();
 		$result = $this->connection->query($sql);
-		if($result){	
+		if($result && !is_bool($result)){	
 			while($row = $result->fetch_assoc()){
 				$data[] = $row;
 			}
@@ -84,7 +84,7 @@ class DB
 			}
 			$this->sql .= implode(" AND ",$parts);
 		}
-		$this->sql .= " ORDER BY id ".$this->order.";";
+		// $this->sql .= " ORDER BY id ".$this->order.";";
 		// echo $this->sql;exit;
 	}
 	protected function prepare_insert_sql($data)

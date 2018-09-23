@@ -1,5 +1,7 @@
 <?php 
 
+date_default_timezone_set('Australia/Melbourne');
+
 include('session.php');
 include('config.php');
 include('db.php');

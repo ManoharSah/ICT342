@@ -1,4 +1,8 @@
 
+$(function () {
+    $('#datetimepicker1').datetimepicker({
+    });
+});
 
 $('#wizard').smartWizard({
 	onLeaveStep:leaveAStepCallback
@@ -28,11 +32,11 @@ function validateSteps(stepnumber) {
     if(stepnumber == 1){
     	var validateFields = [
     		'name',
-    		// 'bus_name',
-    		// 'position',
-    		// 'owner',
-    		// 'phone',
-    		// 'email'
+    		'bus_name',
+    		'position',
+    		'owner',
+    		'phone',
+    		'email'
     	];
     	isStepValid = isValid(validateFields);
     	if(isStepValid) {
@@ -96,10 +100,12 @@ function isValid(validateFields){
 		var elem = $('#'+v);
 		elem.removeClass('bad');
 		elem.find('.alert').remove();
-		if (elem.find('input').val() == ''){
+		if (elem.find('input').val() == '' || elem.find('input').val() < 1 ){
 			elem.addClass('bad');
 			elem.find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert appropriate value</div>');
+			elem.find('.col-md-4.col-sm-4.col-xs-12').after('<div class="alert">Insert appropriate value</div>');
 			valid = false;
+			console.log(elem);
 		}
 	});
 	return valid;
@@ -149,14 +155,14 @@ function show_fields(){
 	var html = '';
 	for(var i = 1; i<=how_many; i++) {
 	html += '<div id="technician_'+i+'><div class="form-group">'
-		+'<label class="control-label col-md-12 col-sm-12 col-xs-12" style="text-align: center">'
+		+'<label class="control-label col-md-12 col-sm-12 col-xs-12" style="margin-bottom:10px;text-align: center;font-weight:normal;font-size:18px;">'
 		+'Technician:'+i+'</label>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_type">'
-		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
+		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Technician Type <span class="required">*</span>'
 		+'</label>'
-		+'<div class="col-md-6 col-sm-6 col-xs-12">'
+		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<select name="technician['+i+'][type]" required="required" class="form-control col-md-7 col-xs-12">'
 		+'<option value="1">Diagnostic Technician</option>'
 		+'<option value="2">Service Technician</option>'
@@ -165,40 +171,40 @@ function show_fields(){
 		+'</div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_wage">'
-		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
+		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Technician Annual Wage ($) <span class="required">*</span>'
 		+'</label>'
-		+'<div class="col-md-6 col-sm-6 col-xs-12">'
+		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][wage]" required="required" class="form-control col-md-7 col-xs-12">'
 		+'<span class="help-block">Annual Salary of a lost technician.</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_productivity">'
-		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
+		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Technicians Productivity (%) <span class="required">*</span></label>'
-		+'<div class="col-md-6 col-sm-6 col-xs-12">'
+		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][productivity]" required="required" class="form-control col-md-7 col-xs-12"><span class="help-block">Productivity of Lost Technician</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_efficiency">'
-		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
+		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Technicians Efficiency (%) <span class="required">*</span>'
 		+'</label>'
-		+'<div class="col-md-6 col-sm-6 col-xs-12">'
+		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][efficiency]" required="required" class="form-control col-md-7 col-xs-12">'
 		+'<span class="help-block">Efficiency of a Lost Technician.</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_hourly_rate" >'
-		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
+		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Retail Labour Rate ($) <span class="required">*</span>'
 		+'</label>'
-		+'<div class="col-md-6 col-sm-6 col-xs-12">'
+		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][hourly_rate]" required="required" class="form-control col-md-7 col-xs-12">'
 		+'<span class="help-block">Hourly Labour Rate.</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_no_of_days" >'
-		+'<label class="control-label col-md-3 col-sm-3 col-xs-12">'
+		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Number of Days Position Vacant <span class="required">*</span>'
 		+'</label>'
-		+'<div class="col-md-6 col-sm-6 col-xs-12">'
+		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][no_of_days]" required="required" class="form-control col-md-7 col-xs-12">'
 		+'<span class="help-block">From how many days position is vacant?</span></div>'
 		+'</div></div>';
@@ -214,11 +220,11 @@ function printToPdf() {
 
 }
 
-function printdiv(printdivname) {
+function printdiv() {
 	
 	var headstr = "<html><head><title>Booking Details</title></head><body>";
 	var footstr = "</body>";
-	var newstr = document.getElementById(printdivname).innerHTML;
+	var newstr = document.getElementById('summary').innerHTML;
 	var oldstr = document.body.innerHTML;
 	
 	document.body.innerHTML = headstr+newstr+footstr;
@@ -229,4 +235,13 @@ function printdiv(printdivname) {
 	
 	return false;
 
+}
+
+function validateForm() {
+
+	if($('input[name="datetime"').val() != '') {
+		return true;
+	}
+
+	return false;
 }
