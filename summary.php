@@ -35,10 +35,22 @@ $total = 0;
           <thead>
             <tr>
               <th>Technician #</th>
-              <th>Lost Retail Labour</th>
-              <th>Recruitment Cost</th>
-              <th>Onboarding Cost</th>
-              <th>Total Cost</th>
+              <th>
+                Lost Retail Labour
+                <a href="#" data-toggle="tooltip" data-placement="top" title="This is for lost retail labour"><i class="glyphicon glyphicon-question-sign"></i></a>  
+              </th>
+              <th>
+                Recruitment Cost
+                <a href="#" data-toggle="tooltip" data-placement="top" title="This is for lost retail labour"><i class="glyphicon glyphicon-question-sign"></i></a>  
+              </th>
+              <th>
+                Onboarding Cost
+                <a href="#" data-toggle="tooltip" data-placement="top" title="This is for lost retail labour"><i class="glyphicon glyphicon-question-sign"></i></a>  
+              </th>
+              <th>
+                Total Cost
+                <a href="#" data-toggle="tooltip" data-placement="top" title="This is for lost retail labour"><i class="glyphicon glyphicon-question-sign"></i></a>  
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -67,9 +79,14 @@ $total = 0;
         </div>
     </div>
     <?php } else { ?>
-      <div class="row">
+      <div class="row" style="padding-top: 50px;">
         <div class="col-md-12 text-center">
-          <h1>Error in calculation number</h1>
+          <h1>Error in retrieing the calculation</h1>
+        </div>
+        <div class="col-md-offset-3 col-md-6 text-center">
+          <p>
+            This usually happens when all the calculation stpes are not followed. Please re-enter the calculation values and complete all the steps.
+          </p>
         </div>
       </div>
     <?php } ?>

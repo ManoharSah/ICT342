@@ -32,6 +32,7 @@ function insert_temp_calculation() {
 		'calculation_id' => $temp_calculation_id,
 		'customer_id' => $temp_customer_id,
 		'datetime' => date_to_mysql(),
+		'call_appointment' => date_to_mysql(),
 		'totalcost' => 0,
 		'temp' => 1
 	));

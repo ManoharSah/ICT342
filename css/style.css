@@ -78,3 +78,14 @@ a.business_case {
 .green_link{
   color: #00ae48;
 }
+
+.alert-success{
+  background: #00ae48 !important;
+}
+
+@media print {
+  #summary {
+    width: 100%;
+    border-collapse: collapse;
+  }
+}

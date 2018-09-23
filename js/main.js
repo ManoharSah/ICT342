@@ -1,4 +1,8 @@
 
+$(function () {
+    $('#datetimepicker1').datetimepicker({
+    });
+});
 
 $('#wizard').smartWizard({
 	onLeaveStep:leaveAStepCallback
@@ -214,11 +218,11 @@ function printToPdf() {
 
 }
 
-function printdiv(printdivname) {
+function printdiv() {
 	
 	var headstr = "<html><head><title>Booking Details</title></head><body>";
 	var footstr = "</body>";
-	var newstr = document.getElementById(printdivname).innerHTML;
+	var newstr = document.getElementById('summary').innerHTML;
 	var oldstr = document.body.innerHTML;
 	
 	document.body.innerHTML = headstr+newstr+footstr;
@@ -229,4 +233,13 @@ function printdiv(printdivname) {
 	
 	return false;
 
+}
+
+function validateForm() {
+
+	if($('input[name="datetime"').val() != '') {
+		return true;
+	}
+
+	return false;
 }

@@ -25,7 +25,7 @@ $data = get_calculation_data($calculation_id);
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-              <form class="form-horizontal form-label-left">
+              <div class="form-horizontal form-label-left">
                 <div id="wizard" class="form_wizard wizard_horizontal">
                   <ul class="wizard_steps" style="margin-bottom: 40px;">
                     <li>
@@ -172,20 +172,34 @@ $data = get_calculation_data($calculation_id);
                     	<tbody>
                     	</tbody>
                     </table>
-                    <div class="row">
-                      <div class="col-md-2 col-md-offset-5 text-center">
-                    		<a href="http://www.solutionsculture.com/contact/" target="_blank" class="btn btn-primary btn-block">Contact</a>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 text-center">
-                        <a href="#" class="btn btn-primary" onclick="printToPdf()">Download</a>
-                        <a href="#" class="btn btn-primary" onclick="printdiv('summary')">Print</a>
-                    	</div>
+                    <div class="row" style="margin-top: 150px;">
+                    <form action="finish.php" method="GET" id="submit_form">
+                        <input type="hidden" name="calculation_id" value="<?php echo $_SESSION['calculation_id'] ?>">
+                        <div class="col-md-12 text-center">
+                          <p>
+                            Now that you have the calculations, lets discuss this further!
+                          </p>
+                            
+                          <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">                            
+                              <div class="input-group date" id="datetimepicker1">
+                                  <input type="text" class="form-control" name="datetime" />
+                                  <span class="input-group-addon">
+                                      <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                          <input type="submit" name="book" onclick="return validateForm()" value="Book a phone appointment" class="btn btn-primary" />
+                          <input type="submit" name="book" value="Finish" class="btn btn-primary" />
+                        </div>
+                    </form>
                     </div>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
