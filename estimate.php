@@ -149,19 +149,19 @@ $data = get_calculation_data($calculation_id);
                     			<th>Technician #</th>
                     			<th>
                             Lost Retail Labour
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for lost retail labour"><i class="glyphicon glyphicon-question-sign"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is the potential lost earnings of the loss of a staff member and is Calculated as [Retail Labour Rate]*[Technician Productivity]*[Technician Efficiency]*[7.6 hours]*[Number of Days Position Vacant]."><i class="glyphicon glyphicon-question-sign"></i></a>
                           </th>
                     			<th>
                             Recruitment Cost
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for recruitment cost"><i class="glyphicon glyphicon-question-sign"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is the Cost of Recruitment in total. Including HR Company, or in house time and Advertisement. Industry Standard indicates that this is 10% of the Annual Income of the lost staff member."><i class="glyphicon glyphicon-question-sign"></i></a>
                           </th>
                     			<th>
                             Onboarding Cost
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for onboarding cost"><i class="glyphicon glyphicon-question-sign"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is the lost potential of earnings based on the new staff member being 80% Efficient at 100% Productivity for the Duration of a Month while getting used to the new working environment."><i class="glyphicon glyphicon-question-sign"></i></a>
                           </th>
                     			<th>
                             Total Cost
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="This is for total cost"><i class="glyphicon glyphicon-question-sign"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Total Cost = Lost Retail Labour + Recruitment Cost + Onboarding Cost."><i class="glyphicon glyphicon-question-sign"></i></a>
                           </th>
                     		</tr>
                     	</thead>
