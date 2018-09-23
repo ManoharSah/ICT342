@@ -38,14 +38,14 @@ $headers = 'From: webmaster@example.com' . "\r\n" .
 mail($to, $subject, $message, $headers);
 
 // send to admin
-$to      = 'admin@exampl.com';
+$admin_email = 'admin@exampl.com';
 $subject = 'New Business Case';
 $message = "New Business Case registed with reference number is ".get_calculation_id($calculation['calculation_id']);
 $headers = 'From: webmaster@example.com' . "\r\n" .
     'Reply-To: webmaster@example.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers);
+mail($admin_email, $subject, $message, $headers);
 
 ?>
 <main>

@@ -16,7 +16,7 @@
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
 	          <ul class="nav navbar-nav" style="width: 100%">
 	            <li><a href="http://www.solutionsculture.com/" target="_blank"><img src="images/logo.png" alt="logo" class="img-responsive" style="width:250px"></a></li>
 	            <li>
-	            	<a class="business_case" href="index.php">Admin Home</a>
+	            	<a class="business_case" href="index.php">Admin <br>Home</a>
 	            </li>
 	            <li class="dropdown admin_dropdown">
 		          <a id="drop4" role="button" data-toggle="dropdown" href="#">Admin <b class="caret"></b></a>

@@ -18,6 +18,8 @@
     WHERE
       cal.temp = 0
       AND cus.temp = 0
+    ORDER BY 
+      cal.datetime DESC
   ";
 
   $results = $db->query($sql);
