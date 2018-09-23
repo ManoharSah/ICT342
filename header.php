@@ -33,9 +33,11 @@
 	        </div>
 	        <div id="navbar" class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav" style="width: 200%">
-	            <li><a href="http://www.solutionsculture.com/" target="_blank"><img src="images/logo.png" alt="logo" class="img-responsive" style="width:250px"></a></li>
+	            <li><a href="http://www.solutionsculture.com/" target="_blank" style="padding-top: 5px;"><img src="images/logo.png" alt="logo" class="img-responsive" style="width:250px"></a></li>
 	            <li>
-	            	<a class="business_case" href="index.php">Business Case</a>
+	            	<a class="business_case" href="index.php">
+	            		Staff Turn <br>Calculator
+	            	</a>
 	            </li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
