@@ -48,7 +48,7 @@ class DB
 	{
 		$data = array();
 		$result = $this->connection->query($sql);
-		if($result){	
+		if($result && !is_bool($result)){	
 			while($row = $result->fetch_assoc()){
 				$data[] = $row;
 			}

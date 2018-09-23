@@ -125,7 +125,7 @@ $data = get_calculation_data($calculation_id);
                       <div class="item form-group"  id="how-many">
                         <label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">How many technicians are you presently missing? <span class="required">*</span>
                         </label>
-                        <div class="col-md-4 col-col-md-offset-2sm-4 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="number" name="step_2[<?php echo $calculation_id ?>][how-many]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['how_many'] ?>">
                           <span class="help-block">Annual Salary of a lost technician.</span>
                         </div>

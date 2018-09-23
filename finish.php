@@ -1,19 +1,51 @@
 <?php include('header.php') ?>
 <?php 
 
-$format = 'm/d/Y h:i A';
-$datetime = DateTime::createFromFormat($format, $_GET['datetime']);
-$calculation = get_calculation_data($_SESSION['calculation_id']);
 
 $book = $_GET['book'];
 
 $is_booked = ($book != 'Finish'); 
 
-global $db;
+$calculation = get_calculation_data($_SESSION['calculation_id']);
 
-$db->table('calculation')->update('calculation_id', $_SESSION['calculation_id'], array(
-  'call_appointment' => $datetime->format('Y-m-d h:i:s')
-));
+if ($is_booked) {
+
+  $format = 'm/d/Y h:i A';
+
+  $datetime = DateTime::createFromFormat($format, $_GET['datetime']);
+
+  global $db;
+
+  $db->table('calculation')->update('calculation_id', $_SESSION['calculation_id'], array(
+    'call_appointment' => $datetime->format('Y-m-d h:i:s')
+  ));
+
+}
+
+// send to client
+$to      = $calculation['email'];
+$subject = 'Confirmation';
+$message = "Congrats!! Your application was successful. Your reference number is ".get_calculation_id($calculation['calculation_id']);
+
+if ($is_booked) {
+  $message .= " Your appointment is booked at ".$datetime->format('h:iA')." on ".$datetime->format('d F, Y').". One of our Solutions Culture staff will call you on ".$calculation['contact'];
+}
+
+$headers = 'From: webmaster@example.com' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
+
+// send to admin
+$to      = 'admin@exampl.com';
+$subject = 'New Business Case';
+$message = "New Business Case registed with reference number is ".get_calculation_id($calculation['calculation_id']);
+$headers = 'From: webmaster@example.com' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
 
 ?>
 <main>
@@ -24,7 +56,7 @@ $db->table('calculation')->update('calculation_id', $_SESSION['calculation_id'],
       
       <div class="col-md-4 col-md-offset-4">
         <div class="alert alert-success text-center">
-          Calcultation Reference Number: SC<?php echo $_SESSION['calculation_id']; ?>  
+          Calculation Reference Number: SC<?php echo $_SESSION['calculation_id']; ?>  
         </div>
         <?php if ($is_booked) { ?>
         <p>

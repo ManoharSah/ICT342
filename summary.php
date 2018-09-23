@@ -54,9 +54,9 @@ $total = 0;
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($summary['technicians'] as $technician) { ?>
+            <?php foreach ($summary['technicians'] as $key => $technician) { ?>
             <tr>
-              <td>Technician 1</td>
+              <td>Technician <?php echo $key+1 ?></td>
               <td><input type="text" class="form-control" disabled value="<?php echo myMoney($technician['lost_retail']); ?>"></td>
               <td><input type="text" class="form-control" disabled value="<?php echo myMoney($technician['recureiment']); ?>"></td>
               <td><input type="text" class="form-control" disabled value="<?php echo myMoney($technician['onboarding']); ?>"></td>

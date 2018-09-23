@@ -32,11 +32,11 @@ function validateSteps(stepnumber) {
     if(stepnumber == 1){
     	var validateFields = [
     		'name',
-    		// 'bus_name',
-    		// 'position',
-    		// 'owner',
-    		// 'phone',
-    		// 'email'
+    		'bus_name',
+    		'position',
+    		'owner',
+    		'phone',
+    		'email'
     	];
     	isStepValid = isValid(validateFields);
     	if(isStepValid) {
@@ -100,10 +100,12 @@ function isValid(validateFields){
 		var elem = $('#'+v);
 		elem.removeClass('bad');
 		elem.find('.alert').remove();
-		if (elem.find('input').val() == ''){
+		if (elem.find('input').val() == '' || elem.find('input').val() < 1 ){
 			elem.addClass('bad');
 			elem.find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert appropriate value</div>');
+			elem.find('.col-md-4.col-sm-4.col-xs-12').after('<div class="alert">Insert appropriate value</div>');
 			valid = false;
+			console.log(elem);
 		}
 	});
 	return valid;
