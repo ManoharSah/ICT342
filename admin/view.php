@@ -67,23 +67,23 @@ $total = 0;
               </tr>
               <tr>
                 <td>Technician Annual Wage ($)</td>
-                <td>$<?php echo myMoney($technician['wage']); ?></td>
+                <td><?php echo myMoney($technician['wage']); ?></td>
               </tr>
               <tr>
                 <td>Technicians Productivity (%)</td>
-                <td>$<?php echo myMoney($technician['productivity']); ?></td>
+                <td><?php echo myMoney($technician['productivity']); ?></td>
               </tr>
               <tr>
                 <td>Technicians Efficiency (%)</td>
-                <td>$<?php echo myMoney($technician['efficiency']); ?></td>
+                <td><?php echo myMoney($technician['efficiency']); ?></td>
               </tr>
               <tr>
                 <td>Retail Labour Rate ($)</td>
-                <td>$<?php echo myMoney($technician['hourly_rate']); ?></td>
+                <td><?php echo myMoney($technician['hourly_rate']); ?></td>
               </tr>
               <tr>
                 <td>Number of Days Position Vacant</td>
-                <td>$<?php echo myMoney($technician['no_of_days']); ?></td>
+                <td><?php echo myMoney($technician['no_of_days']); ?></td>
               </tr>
             <?php endforeach ?>
             
@@ -93,13 +93,25 @@ $total = 0;
       <div class="col-md-6 well">
         <table class="table">
           <thead>
-            <tr>
+           <tr>
               <th>Technician #</th>
-              <th>Lost Retail Labour</th>
-              <th>Recruitment Cost</th>
-              <th>Onboarding Cost</th>
-              <th>Total Cost</th>
-            </tr>
+                <th>
+                  Lost Retail Labour
+                  <a href="#" data-toggle="tooltip" data-placement="top" title="This is the potential lost earnings of the loss of a staff member and is Calculated as [Retail Labour Rate]*[Technician Productivity]*[Technician Efficiency]*[7.6 hours]*[Number of Days Position Vacant]."><i class="glyphicon glyphicon-question-sign"></i></a>
+                </th>
+                <th>
+                  Recruitment Cost
+                  <a href="#" data-toggle="tooltip" data-placement="top" title="This is the Cost of Recruitment in total. Including HR Company, or in house time and Advertisement. Industry Standard indicates that this is 10% of the Annual Income of the lost staff member."><i class="glyphicon glyphicon-question-sign"></i></a>
+                </th>
+                <th>
+                  Onboarding Cost
+                  <a href="#" data-toggle="tooltip" data-placement="top" title="This is the lost potential of earnings based on the new staff member being 80% Efficient at 100% Productivity for the Duration of a Month while getting used to the new working environment."><i class="glyphicon glyphicon-question-sign"></i></a>
+                </th>
+                <th>
+                  Total Cost<br>
+                  <a href="#" data-toggle="tooltip" data-placement="top" title="Total Cost = Lost Retail Labour + Recruitment Cost + Onboarding Cost."><i class="glyphicon glyphicon-question-sign"></i></a>
+                </th>
+              </tr>
           </thead>
           <tbody>
             <?php foreach ($calculation['technicians'] as $key => $technician) { ?>
