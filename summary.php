@@ -73,8 +73,8 @@ $total = 0;
 
         <div class="row">
           <div class="col-md-12 text-center">
-            <a href="#" class="btn btn-primary">Download</a>
-            <a href="#" class="btn btn-primary">Print</a>
+            <a href="download.php?id=<?php echo $summary['calculation_id'] ?>" class="btn btn-primary">Download</a>
+            <a href="print.php?id=<?php echo $summary['calculation_id'] ?>" class="btn btn-primary">Print</a>
           </div>
         </div>
     </div>

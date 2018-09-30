@@ -38,7 +38,7 @@ $headers = 'From: webmaster@example.com' . "\r\n" .
 mail($to, $subject, $message, $headers);
 
 // send to admin
-$admin_email = 'admin@exampl.com';
+$admin_email = 'admin@example.com';
 $subject = 'New Business Case';
 $message = "New Business Case registed with reference number is ".get_calculation_id($calculation['calculation_id']);
 $headers = 'From: webmaster@example.com' . "\r\n" .
@@ -59,14 +59,15 @@ mail($admin_email, $subject, $message, $headers);
           Calculation Reference Number: SC<?php echo $_SESSION['calculation_id']; ?>  
         </div>
         <?php if ($is_booked) { ?>
-        <p>
-          Thank you, your appointment is booked at <?php echo $datetime->format('h:iA') ?> on <?php echo $datetime->format('d F, Y') ?>. One of our Solutions Culture staff will call you on <?php echo $calculation['contact'] ?>.
+        <p style="font-size: 16px !important;">
+          Thank you, <br>
+          Your appointment is booked at <strong><?php echo $datetime->format('h:iA') ?> on <?php echo $datetime->format('d F, Y') ?></strong>. One of our Solutions Culture staff will call you on <?php echo $calculation['contact'] ?>.
         </p>
         <?php } ?>
       </div>
-      <div class="col-md-12 text-center">
-        <a href="#" class="btn btn-primary" onclick="printToPdf()">Download</a>
-        <a href="#" class="btn btn-primary" onclick="printdiv()">Print</a>
+      <div class="col-md-12 text-center form-group" style="margin-top: 20px;">
+        <a href="download.php?id=<?php echo $_SESSION['calculation_id']; ?>" class="btn btn-primary">Download</a>
+        <a href="print.php?id=<?php echo $_SESSION['calculation_id']; ?>" class="btn btn-primary">Print</a>
       </div>
     </div>
 

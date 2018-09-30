@@ -15,11 +15,16 @@ $calculation = get_summary($_GET['id']);
 $total = 0;
  ?>
 
-<main>
+<main style="padding-bottom: 200px;">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <p class="text-center">Calculation Number: <?php echo get_calculation_id($calculation['calculation_id']) ?></p>
+      <div class="col-md-6">
+        <p class="text-center" style="font-size: 15px;">Calculation Number: <strong><?php echo get_calculation_id($calculation['calculation_id']) ?></strong></p>
+        <?php if ($calculation['call_appointment'] != '') { ?>
+        <p class="text-center" style="font-size: 15px;">
+          Call Appointment : <strong><?php echo $calculation['call_appointment']; ?></strong>  
+        </p>
+        <?php } ?>
         <table class="table table-hover view-table">
           <tbody> 
             <tr>
@@ -37,14 +42,7 @@ $total = 0;
             <tr>
               <td>Owner?</td>
               <td>
-                <div id="gender" class="btn-group" data-toggle="buttons">
-                  <label class="btn <?php echo ($calculation['owner'] == 1 ? 'btn-primary' : 'btn-default' ) ?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                    <input type="radio" name="gender" value="male"> &nbsp; Owner &nbsp;
-                  </label>
-                  <label class="btn <?php echo ($calculation['owner'] == 2 ? 'btn-primary' : 'btn-default' ) ?>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                    <input type="radio" name="gender" value="female"> Employee
-                  </label>
-                </div>
+                <?php echo $calculation['owner'] == 1 ? 'Owner' : 'Emplyoee'; ?>
               </td>
             </tr>
             <tr>
@@ -65,7 +63,7 @@ $total = 0;
             </tr>
             <?php foreach ($calculation['technicians'] as $key => $technician): ?>
               <tr>
-                <td colspan="2" class="text-center">Technican <?php echo $key+1 ?></td>
+                <td colspan="2" class="text-center"><strong style="font-size: 15px;">Technican <?php echo $key+1 ?></strong></td>
               </tr>
               <tr>
                 <td>Technician Annual Wage ($)</td>
@@ -81,7 +79,7 @@ $total = 0;
               </tr>
               <tr>
                 <td>Retail Labour Rate ($)</td>
-                <td>$<?php echo myMoney($technician['lost_retail']); ?></td>
+                <td>$<?php echo myMoney($technician['hourly_rate']); ?></td>
               </tr>
               <tr>
                 <td>Number of Days Position Vacant</td>
@@ -91,8 +89,9 @@ $total = 0;
             
           </tbody>
         </table>
-        
-         <table class="table">
+      </div>
+      <div class="col-md-6 well">
+        <table class="table">
           <thead>
             <tr>
               <th>Technician #</th>
@@ -119,14 +118,14 @@ $total = 0;
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <a href="#" class="btn btn-primary">Download</a>
-        <a href="#" class="btn btn-primary">Print</a>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <a href="../download.php?id=<?php echo $calculation['calculation_id']; ?>" class="btn btn-primary">Download</a>
+            <a href="../print.php?id=<?php echo $calculation['calculation_id']; ?>" class="btn btn-primary">Print</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</main>
+</main> 
 <?php include('footer.php') ?>

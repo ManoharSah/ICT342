@@ -167,6 +167,7 @@ function show_fields(){
 		+'<option value="1">Diagnostic Technician</option>'
 		+'<option value="2">Service Technician</option>'
 		+'<option value="3">General/Repair Technician</option>'
+		+'<option value="4">Others</option>'
 		+'</select>'
 		+'</div>'
 		+'</div>'
@@ -239,9 +240,14 @@ function printdiv() {
 
 function validateForm() {
 
+	$('#datefield').removeClass('has-error');
+	
+
 	if($('input[name="datetime"').val() != '') {
 		return true;
 	}
+
+	$('#datefield').addClass('has-error');
 
 	return false;
 }

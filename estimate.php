@@ -119,7 +119,6 @@ $data = get_calculation_data($calculation_id);
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="number" name="step_2[<?php echo $calculation_id ?>][how-many-now]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['how_many_now'] ?>">
-                          <span class="help-block">Annual Salary of a lost technician.</span>
                         </div>
                       </div>
                       <div class="item form-group"  id="how-many">
@@ -127,7 +126,6 @@ $data = get_calculation_data($calculation_id);
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="number" name="step_2[<?php echo $calculation_id ?>][how-many]" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $data['how_many'] ?>">
-                          <span class="help-block">Annual Salary of a lost technician.</span>
                         </div>
                       </div>
                       <div class="form-group">                        
@@ -176,12 +174,12 @@ $data = get_calculation_data($calculation_id);
                     <form action="finish.php" method="GET" id="submit_form">
                         <input type="hidden" name="calculation_id" value="<?php echo $_SESSION['calculation_id'] ?>">
                         <div class="col-md-12 text-center">
-                          <p>
+                          <p style="font-size: 17px;">
                             Now that you have the calculations, lets discuss this further!
                           </p>
                             
-                          <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">                            
+                          <div class="form-group" id="datefield">
+                            <div class="col-md-3 col-md-offset-3">                            
                               <div class="input-group date" id="datetimepicker1">
                                   <input type="text" class="form-control" name="datetime" />
                                   <span class="input-group-addon">
@@ -189,10 +187,12 @@ $data = get_calculation_data($calculation_id);
                                   </span>
                               </div>
                             </div>
+                            <div class="col-md-3">
+                              <input type="submit" name="book" onclick="return validateForm()" value="Book a phone appointment" class="btn btn-primary" />
+                            </div>
                           </div>
                         </div>
-                        <div class="col-md-12 text-center">
-                          <input type="submit" name="book" onclick="return validateForm()" value="Book a phone appointment" class="btn btn-primary" />
+                        <div class="col-md-12 text-center form-group" style="margin-top: 20px;">
                           <input type="submit" name="book" value="Finish" class="btn btn-primary" />
                         </div>
                     </form>
