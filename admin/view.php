@@ -22,7 +22,7 @@ $total = 0;
         <p class="text-center" style="font-size: 15px;">Calculation Number: <strong><?php echo get_calculation_id($calculation['calculation_id']) ?></strong></p>
         <?php if ($calculation['call_appointment'] != '') { ?>
         <p class="text-center" style="font-size: 15px;">
-          Call Appointment : <strong><?php echo $calculation['call_appointment']; ?></strong>  
+          Phone Appointment : <strong><?php echo $calculation['call_appointment']; ?></strong>  
         </p>
         <?php } ?>
         <table class="table table-hover view-table">
