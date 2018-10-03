@@ -38,7 +38,7 @@
 	          <ul class="nav navbar-nav" style="width: 200%">
 	            <li><a href="http://www.solutionsculture.com/" target="_blank" style="padding-top: 5px;"><img src="images/logo.png" alt="logo" class="img-responsive" style="width:250px"></a></li>
 	            <li>
-	            	<a class="business_case" href="index.php">
+	            	<a class="business_case" href="index.php" style="color: rgb(115, 135, 156) !important;">
 	            		Staff Turn <br>Calculator
 	            	</a>
 	            </li>

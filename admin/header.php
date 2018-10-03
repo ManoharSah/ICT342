@@ -35,7 +35,7 @@
 	          <ul class="nav navbar-nav" style="width: 100%">
 	            <li><a href="http://www.solutionsculture.com/" target="_blank"><img src="images/logo.png" alt="logo" class="img-responsive" style="width:250px"></a></li>
 	            <li>
-	            	<a class="business_case" href="../index.php">Staff Turn <br>Calculator</a>
+	            	<a class="business_case" href="../index.php" style="color: rgb(115, 135, 156) !important;">Staff Turn <br>Calculator</a>
 	            </li>
 	            <li class="dropdown admin_dropdown">
 		          <a id="drop4" role="button" data-toggle="dropdown" href="#">Admin <b class="caret"></b></a>

@@ -6,6 +6,11 @@ $book = $_GET['book'];
 
 $is_booked = ($book != 'Finish'); 
 
+if(!isset($_SESSION['calculation_id'])) {
+  header("Location: index.php");
+  exit;
+}
+
 $calculation = get_calculation_data($_SESSION['calculation_id']);
 
 if ($is_booked) {
@@ -61,7 +66,7 @@ mail($admin_email, $subject, $message, $headers);
         <?php if ($is_booked) { ?>
         <p style="font-size: 16px !important;">
           Thank you, <br>
-          Your appointment is booked at <strong><?php echo $datetime->format('h:iA') ?> on <?php echo $datetime->format('d F, Y') ?></strong>. One of our Solutions Culture staff will call you on <?php echo $calculation['contact'] ?>.
+          Your appointment is booked at <a href="javascript:void(0);" class="green" style="color: #00ae48;"><strong><?php echo $datetime->format('h:iA') ?> on <?php echo $datetime->format('d F, Y') ?></strong></a>. One of our Solutions Culture staff will call you on <?php echo $calculation['contact'] ?>.
         </p>
         <?php } ?>
       </div>

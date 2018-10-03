@@ -175,6 +175,9 @@ $data = get_calculation_data($calculation_id);
                         <input type="hidden" name="calculation_id" value="<?php echo $_SESSION['calculation_id'] ?>">
                         <div class="col-md-12 text-center">
                           <p style="font-size: 17px;">
+                            If you want to start again click <a href="index.php" class="green_link"><strong>here</strong></a>
+                          </p>
+                          <p style="font-size: 17px;">
                             Now that you have the calculations, lets discuss this further!
                           </p>
                             

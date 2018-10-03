@@ -29,13 +29,14 @@
 <main>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-8 col-md-offset-2">
         <h1 class="text-center">View Business Case</h1>
         <table class="table table-hover">
           <thead>
             <tr>
               <th>Calculation Number</th>
               <th>Bussiness Name</th>
+              <th>Enquire Date</th>
               <th>Appointment Date</th>
               <th></th>
             </tr>
@@ -47,6 +48,7 @@
                 <tr>
                   <td><?php echo get_calculation_id($result['calculation_id']) ?></td>
                   <td><?php echo $result['bus_name']; ?></td>
+                  <td><?php echo $result['datetime'] == '0000-00-00 00:00:00' ? '' : $result['datetime']; ?></td>
                   <td><?php echo $result['call_appointment'] == '0000-00-00 00:00:00' ? '' : $result['call_appointment']; ?></td>
                   <td>
                     <a href="view.php?id=<?php echo $result['calculation_id'] ?>" class="btn btn-primary">View</a>

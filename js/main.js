@@ -11,20 +11,22 @@ $('#wizard').smartWizard({
 function leaveAStepCallback(obj, context) {
 	if(context.fromStep == 2) {
 		show_fields();
-		if(validateSteps(context.fromStep)){
-			$('.buttonNext').html("Submit");
-			$('.buttonPrevious').hide();
-		}
 	}
 	if(context.fromStep == 3) {
 		// show summary
 		show_summary();
+	}
+	if(context.toStep == 4) {
 		if(validateSteps(context.fromStep)){
 			$('.buttonNext').hide();
+			$('.buttonPrevious').hide();
 			$('.buttonFinish').addClass('btn btn-primary').hide();
 		}
 	}
-	return validateSteps(context.fromStep);
+	if(context.fromStep < context.toStep) {
+		return validateSteps(context.fromStep);
+	}
+	return true;
 }
 
 function validateSteps(stepnumber) {
@@ -105,10 +107,22 @@ function isValid(validateFields){
 			elem.find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Insert appropriate value</div>');
 			elem.find('.col-md-4.col-sm-4.col-xs-12').after('<div class="alert">Insert appropriate value</div>');
 			valid = false;
-			console.log(elem);
+		}
+		if(v == 'email' && valid) {
+			if (!validateEmail(elem.find('input').val())) {
+				elem.addClass('bad');
+				elem.find('.col-md-6.col-sm-6.col-xs-12').after('<div class="alert">Invalid Email</div>');
+				elem.find('.col-md-4.col-sm-4.col-xs-12').after('<div class="alert">Invalid Email</div>');	
+				valid = false;
+			}
 		}
 	});
 	return valid;
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }
 
 $('#wizard_verticle').smartWizard({
@@ -174,6 +188,7 @@ function show_fields(){
 		+'<div class="item form-group" id="technician_'+i+'_wage">'
 		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Technician Annual Wage ($) <span class="required">*</span>'
+		+' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="wage..."><i class="glyphicon glyphicon-question-sign"></i></a>'
 		+'</label>'
 		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][wage]" required="required" class="form-control col-md-7 col-xs-12">'
@@ -181,13 +196,15 @@ function show_fields(){
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_productivity">'
 		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
-		+'Technicians Productivity (%) <span class="required">*</span></label>'
-		+'<div class="col-md-4 col-sm-4 col-xs-12">'
+		+'Technicians Productivity (%) <span class="required">*</span>'
+		+' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="wage..."><i class="glyphicon glyphicon-question-sign"></i></a>'
+		+'</label><div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][productivity]" required="required" class="form-control col-md-7 col-xs-12"><span class="help-block">Productivity of Lost Technician</span></div>'
 		+'</div>'
 		+'<div class="item form-group" id="technician_'+i+'_efficiency">'
 		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Technicians Efficiency (%) <span class="required">*</span>'
+		+' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="wage..."><i class="glyphicon glyphicon-question-sign"></i></a>'
 		+'</label>'
 		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][efficiency]" required="required" class="form-control col-md-7 col-xs-12">'
@@ -196,6 +213,7 @@ function show_fields(){
 		+'<div class="item form-group" id="technician_'+i+'_hourly_rate" >'
 		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Retail Labour Rate ($) <span class="required">*</span>'
+		+' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="wage..."><i class="glyphicon glyphicon-question-sign"></i></a>'
 		+'</label>'
 		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][hourly_rate]" required="required" class="form-control col-md-7 col-xs-12">'
@@ -204,6 +222,7 @@ function show_fields(){
 		+'<div class="item form-group" id="technician_'+i+'_no_of_days" >'
 		+'<label class="control-label col-md-offset-2 col-md-3 col-sm-3 col-xs-12">'
 		+'Number of Days Position Vacant <span class="required">*</span>'
+		+' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="wage..."><i class="glyphicon glyphicon-question-sign"></i></a>'
 		+'</label>'
 		+'<div class="col-md-4 col-sm-4 col-xs-12">'
 		+'<input type="number" name="technician['+i+'][no_of_days]" required="required" class="form-control col-md-7 col-xs-12">'
@@ -211,6 +230,7 @@ function show_fields(){
 		+'</div></div>';
 	}
 	$('#show_techician').html(html);
+	$('[data-toggle="tooltip"]').tooltip();
 }
 
 function printToPdf() {
@@ -242,11 +262,13 @@ function validateForm() {
 
 	$('#datefield').removeClass('has-error');
 	
+	$('#datefield').find('span.help-block').remove();
 
 	if($('input[name="datetime"').val() != '') {
 		return true;
 	}
 
+	$('#datefield').find('.input-group').after('<span class="help-block">Please select valid date and time.</span>');
 	$('#datefield').addClass('has-error');
 
 	return false;
